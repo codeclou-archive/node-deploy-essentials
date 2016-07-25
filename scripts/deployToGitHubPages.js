@@ -19,7 +19,7 @@ exports.run = function(gitHubCommitterEmail,
     shell.exec('git config --global user.name "' + gitHubCommitterName + '"', {silent:true});
     shell.exec('git config --global push.default simple', {silent:true});
 
-    // TODO: REPLACE 'https://' here with ' https://user:token@'
+    gitHubCloneUrl = gitHubCloneUrl.replace(/^https:\/\//,'https://' + gitHubAuthUsername + ':' + gitHubAuthTokenOrPassword + '@');
 
     //
     // CLONE
