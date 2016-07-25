@@ -41,8 +41,8 @@ exports.run = function(gitHubCommitterEmail,
     if (gitHubSubdirectory !== undefined && gitHubSubdirectory !== null) {
         if (! shell.test('-d', CLONE_DIR + '/' + gitHubSubdirectory)) {
             shell.mkdir(CLONE_DIR + '/' + gitHubSubdirectory);
-            workspace = CLONE_DIR + '/' + gitHubSubdirectory;
         }
+        workspace = CLONE_DIR + '/' + gitHubSubdirectory;
     }
 
     //
