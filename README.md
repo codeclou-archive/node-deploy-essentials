@@ -34,7 +34,7 @@ npm run ndes replace "___BRANCH___" byValue "FOO" in "src/deploy-info.js"
 ### 2. Grep JSON Helper
 
 ```
-npm run grepJson "$.homepage" from "package.json" withMessage "deployed to: "
+npm run ndes grepJson "$.homepage" from "package.json" withMessage "deployed to: "
 ```
 
 Greps a JSON Value by using [jsonpath querys](https://www.npmjs.com/package/jsonpath)
