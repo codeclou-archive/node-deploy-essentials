@@ -52,8 +52,8 @@ exports.run = function(gitHubCommitterEmail,
     shell.cp('-r', sourceDirToDeployContents + '/*', workspace + '/');
 
     shell.cd(workspace);
-    shell.exec('git diff --exit-code', function(code, stdout, stderr) {
-        if (code === 0) {
+    shell.exec('git ls-files --other --exclude-standard --directory | wc -l', function(code, stdout, stderr) {
+        if (stdout === '0') {
             shell.echo("NOTHING TO COMMIT");
         } else {
             shell.echo("CHANGES DETECTED. ADDING, COMMITTING, PUSHING.");
@@ -62,4 +62,9 @@ exports.run = function(gitHubCommitterEmail,
             shell.exec('git push');
         }
     });
+
+    //
+    // CLEANUP
+    //
+    shell.rm('-rf', CLONE_DIR);
 };
