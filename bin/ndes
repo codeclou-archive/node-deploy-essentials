@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 var deployToGitHubPages = require('../scripts/deployToGitHubPages.js');
+var replace = require('../scripts/replace.js');
 
 if (process.argv[2] === 'deployToGitHubPages') {
     var gitHubSubdirectory = null;
@@ -25,15 +26,6 @@ if (process.argv[2] === 'deployToGitHubPages') {
     if (process.argv[15] === 'intoSubdirectory' && process.argv[16] !== undefined) {
         gitHubSubdirectory = process.argv[16];
     }
-    /*
-    console.log(gitHubCommitterName);
-    console.log(gitHubCommitterEmail);
-    console.log(gitHubAuthUsername);
-    console.log(gitHubAuthTokenOrPassword);
-    console.log(gitHubCloneUrl);
-    console.log(sourceDirToDeployContents);
-    console.log(gitHubSubdirectory);
-    */
     deployToGitHubPages.run(gitHubCommitterEmail,
                             gitHubCommitterName,
                             gitHubAuthUsername,
@@ -41,6 +33,22 @@ if (process.argv[2] === 'deployToGitHubPages') {
                             gitHubCloneUrl,
                             gitHubSubdirectory,
                             sourceDirToDeployContents);
+
+
+
+} else if (process.argv[2] === 'replace') {
+    var stringToReplace = process.argv[3];
+    var replacementString = '';
+    var fileToPerformReplaceOn = '';
+    if (process.argv[4] === 'byValue' && process.argv[5] !== undefined) {
+        replacementString = process.argv[5];
+        fileToPerformReplaceOn = process.argv[7];
+    }
+    if (process.argv[4] === 'byCurrentTimetamp') {
+        replacementString = new Date().toISOString();
+        fileToPerformReplaceOn = process.argv[6];
+    }
+    replace.run(stringToReplace, replacementString, fileToPerformReplaceOn);
 } else {
     process.exit(1);
 }

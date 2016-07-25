@@ -21,7 +21,17 @@ Add the **dependency** to your **package.json** (soon there will be npm install)
  
 ## Scripts
 
-### Deploy to GitHub Pages
+### 1. Replace Helper
+
+```
+# Replace the String ___TIMEST___ by current ISO 8601 DateString 
+npm run ndes replace "___TIMEST___" byCurrentTimetamp in "src/deploy-info.js"
+
+# Replace ___BRANCH___ by value "FOO"
+npm run replace "___BRANCH___" byValue "FOO" in "src/deploy-info.js"
+```
+
+### 2. Deploy to GitHub Pages
 
 Will deploy to GitHub Pages with the following command:
 
