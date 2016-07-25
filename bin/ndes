@@ -2,7 +2,6 @@
 
 var deployToGitHubPages = require('../scripts/deployToGitHubPages.js');
 
-console.log(process.argv);
 if (process.argv[2] === 'deployToGitHubPages') {
     var gitHubSubdirectory = null;
     if (process.argv[3] === 'as' && process.argv[4] !== undefined) {
