@@ -1,0 +1,47 @@
+#!/usr/bin/env node
+
+var deployToGitHubPages = require('../scripts/deployToGitHubPages.js');
+
+console.log(process.argv);
+if (process.argv[2] === 'deployToGitHubPages') {
+    var gitHubSubdirectory = null;
+    if (process.argv[3] === 'as' && process.argv[4] !== undefined) {
+        var gitHubCommitterName = process.argv[4];
+    }
+    if (process.argv[5] === 'withEmail' && process.argv[6] !== undefined) {
+        var gitHubCommitterEmail = process.argv[6];
+    }
+    if (process.argv[7] === 'withGitHubAuthUsername' && process.argv[8] !== undefined) {
+        var gitHubAuthUsername = process.argv[8];
+    }
+    if (process.argv[9] === 'withGitHubAuthToken' && process.argv[10] !== undefined) {
+        var gitHubAuthTokenOrPassword = process.argv[10];
+    }
+    if (process.argv[11] === 'toRepository' && process.argv[12] !== undefined) {
+        var gitHubCloneUrl = process.argv[12];
+    }
+    if (process.argv[13] === 'fromSource' && process.argv[14] !== undefined) {
+        var sourceDirToDeployContents = process.argv[14];
+    }
+    if (process.argv[15] === 'intoSubdirectory' && process.argv[16] !== undefined) {
+        gitHubSubdirectory = process.argv[16];
+    }
+    /*
+    console.log(gitHubCommitterName);
+    console.log(gitHubCommitterEmail);
+    console.log(gitHubAuthUsername);
+    console.log(gitHubAuthTokenOrPassword);
+    console.log(gitHubCloneUrl);
+    console.log(sourceDirToDeployContents);
+    console.log(gitHubSubdirectory);
+    */
+    deployToGitHubPages.run(gitHubCommitterEmail,
+                            gitHubCommitterName,
+                            gitHubAuthUsername,
+                            gitHubAuthTokenOrPassword,
+                            gitHubCloneUrl,
+                            gitHubSubdirectory,
+                            sourceDirToDeployContents);
+} else {
+    process.exit(1);
+}

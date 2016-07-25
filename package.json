@@ -14,5 +14,8 @@
   },
   "dependencies": {
     "shelljs": "^0.7.0"
+  },
+  "bin": {
+    "ndes": "./bin/ndes"
   }
 }
