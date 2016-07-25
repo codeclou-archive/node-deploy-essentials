@@ -28,7 +28,7 @@ Add the **dependency** to your **package.json** (soon there will be npm install)
 npm run ndes replace "___TIMEST___" byCurrentTimetamp in "src/deploy-info.js"
 
 # Replace ___BRANCH___ by value "FOO"
-npm run replace "___BRANCH___" byValue "FOO" in "src/deploy-info.js"
+npm run ndes replace "___BRANCH___" byValue "FOO" in "src/deploy-info.js"
 ```
 
 ### 2. Deploy to GitHub Pages
