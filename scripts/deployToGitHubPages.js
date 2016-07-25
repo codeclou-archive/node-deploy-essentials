@@ -22,6 +22,14 @@ exports.run = function(gitHubCommitterEmail,
     gitHubCloneUrl = gitHubCloneUrl.replace(/^https:\/\//,'https://' + gitHubAuthUsername + ':' + gitHubAuthTokenOrPassword + '@');
 
     //
+    // TEST
+    //
+    if (shell.test('-d', '.git')) {
+        shell.echo('PLEASE DELETE .git DIRECTORY. CANNOT CLONE INTO AND EXISTING REPOSITORY WORKSPACE! EXIT.')
+        process.exit(2);
+    }
+
+        //
     // CLONE
     //
     shell.exec('git clone --single-branch --branch gh-pages ' + gitHubCloneUrl + ' ' + CLONE_DIR, {silent:true});
