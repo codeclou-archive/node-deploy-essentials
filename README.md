@@ -31,7 +31,16 @@ npm run ndes replace "___TIMEST___" byCurrentTimetamp in "src/deploy-info.js"
 npm run ndes replace "___BRANCH___" byValue "FOO" in "src/deploy-info.js"
 ```
 
-### 2. Deploy to GitHub Pages
+### 2. Grep JSON Helper
+
+```
+npm run grepJson "$.homepage" from "package.json" withMessage "deployed to: "
+```
+
+Greps a JSON Value by using [jsonpath querys](https://www.npmjs.com/package/jsonpath)
+
+
+### 3. Deploy to GitHub Pages
 
 Will deploy to GitHub Pages with the following command:
 

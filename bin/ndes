@@ -2,6 +2,7 @@
 
 var deployToGitHubPages = require('../scripts/deployToGitHubPages.js');
 var replace = require('../scripts/replace.js');
+var grepJson = require('../scripts/grepJson');
 
 if (process.argv[2] === 'deployToGitHubPages') {
     var gitHubSubdirectory = null;
@@ -49,6 +50,17 @@ if (process.argv[2] === 'deployToGitHubPages') {
         fileToPerformReplaceOn = process.argv[6];
     }
     replace.run(stringToReplace, replacementString, fileToPerformReplaceOn);
+
+
+} else if (process.argv[2] === 'grepJson') {
+    var jsonpath = process.argv[3];
+    var jsonfile = process.argv[5];
+    var message = null;
+    if (process.argv[6] === 'withMessage' && process.argv[7] !== undefined) {
+        message = process.argv[7];
+    }
+    grepJson.run(jsonpath, jsonfile, message);
+
 } else {
     process.exit(1);
 }

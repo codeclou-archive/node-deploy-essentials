@@ -13,6 +13,7 @@
     "url": "https://github.com/codeclou/node-deploy-essentials/issues"
   },
   "dependencies": {
+    "jsonpath": "^0.2.6",
     "shelljs": "^0.7.0"
   },
   "bin": {
