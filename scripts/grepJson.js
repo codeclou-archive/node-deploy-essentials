@@ -9,7 +9,7 @@ exports.run = function(jsonpath, jsonfile, message) {
         if (err) throw err;
         var result = jp.query(JSON.parse(data), jsonpath);
         if (message !== null) {
-            shell.echo(message + result);
+            shell.echo(message + ' ' + result);
         } else {
             shell.echo(result);
         }
