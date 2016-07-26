@@ -107,6 +107,7 @@ npm run ndes grepJson "$.homepage" from "package.json" withMessage "deployed to:
 
 Greps a JSON Value by using [jsonpath querys](https://www.npmjs.com/package/jsonpath)
 
+----
 
 ### :bulb: 3. Deploy to GitHub Pages
 
