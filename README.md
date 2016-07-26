@@ -26,15 +26,13 @@ Then add this **script** to wrap the binary in your `package.json`
  
 ## Scripts
 
-### 1. Replace Helper
+### :bulb: 1. Replace Helper
 
 The replace helper helps you replace Strings in files.
 
-#### replace {searchString} byCurrentTimetamp in {filename}
+#### :cyclone: replace {searchString} byCurrentTimetamp in {filename}
 
 This helper replaces the `searchString` by the current ISO 8601 DateString in the file called `filename`.
-
-----
 
 **Example**
 
@@ -64,12 +62,11 @@ export default {
 }
 ```
 
+----
 
-#### replace {searchString} by {value} in {filename}
+#### :cyclone: replace {searchString} by {value} in {filename}
 
 This helper replaces the `searchString` by the `value` in the file called `filename`.
-
-----
 
 **Example**
 
@@ -100,8 +97,9 @@ export default {
 }
 ```
 
+----
 
-### 2. Grep JSON Helper
+### :bulb: 2. Grep JSON Helper
 
 ```
 npm run ndes grepJson "$.homepage" from "package.json" withMessage "deployed to:"
@@ -110,7 +108,7 @@ npm run ndes grepJson "$.homepage" from "package.json" withMessage "deployed to:
 Greps a JSON Value by using [jsonpath querys](https://www.npmjs.com/package/jsonpath)
 
 
-### 3. Deploy to GitHub Pages
+### :bulb: 3. Deploy to GitHub Pages
 
 Will deploy to GitHub Pages with the following command:
 
