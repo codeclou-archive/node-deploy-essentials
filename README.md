@@ -2,17 +2,22 @@
 
 ----
 
-### :bangbang: THIS IS WORK IN PROGRESS - DO NOT USE
+This library brings you easy to use deploy scripts and helper scripts to write human readable deploy code.
+It is powered by [ShellJS](https://github.com/shelljs/shelljs) and [jsonpath](https://www.npmjs.com/package/jsonpath).
+
 
 ## Howto Use
 
-Add the **dependency** to your **package.json** (soon there will be npm install). Also add a **scripts** entry.
+Install the **dependency**
+
+```shell
+npm install node-deploy-essentials --save-dev
+```
+
+Then add this **script** to wrap the binary in your `package.json`
 
 ```json
 {
-  "devDependencies": {
-    "node-deploy-essentials": "git+https://github.com/codeclou/node-deploy-essentials.git#master"
-  },
   "scripts": {
     "ndes": "node ./node_modules/.bin/ndes"
   }
@@ -23,13 +28,78 @@ Add the **dependency** to your **package.json** (soon there will be npm install)
 
 ### 1. Replace Helper
 
-```
-# Replace the String ___TIMEST___ by current ISO 8601 DateString 
-npm run ndes replace "___TIMEST___" byCurrentTimetamp in "src/deploy-info.js"
+The replace helper helps you replace Strings in files.
 
-# Replace ___BRANCH___ by value "FOO"
-npm run ndes replace "___BRANCH___" byValue "FOO" in "src/deploy-info.js"
+#### replace {searchString} byCurrentTimetamp in {filename}
+
+This helper replaces the `searchString` by the current ISO 8601 DateString in the file called `filename`.
+
+----
+
+**Example**
+
+Let's assume you have the following file `src/deploy-info.js`
+
+```js
+export default {
+  branch:    '___BRANCH___',
+  commit:    '___COMMIT___',
+  buildTime: '___TIMEST___'
+}
 ```
+
+Then we want to replace `___TIMEST___` by the current timestamp you do
+
+```
+npm run ndes replace "___TIMEST___" byCurrentTimetamp in "src/deploy-info.js"
+```
+
+The `src/deploy-info.js` now looks like
+
+```js
+export default {
+  branch:    '___BRANCH___',
+  commit:    '___COMMIT___',
+  buildTime: '2016-07-25T20:50:23.722Z'
+}
+```
+
+
+#### replace {searchString} by {value} in {filename}
+
+This helper replaces the `searchString` by the `value` in the file called `filename`.
+
+----
+
+**Example**
+
+Let's assume you have the following file `src/deploy-info.js`
+
+```js
+export default {
+  branch:    '___BRANCH___',
+  commit:    '___COMMIT___',
+  buildTime: '___TIMEST___'
+}
+```
+
+Then we want to replace `___BRANCH___` by our Branchname.
+
+
+```
+npm run ndes replace "___BRANCH___" byValue "master" in "src/deploy-info.js"
+```
+
+The `src/deploy-info.js` now looks like
+
+```js
+export default {
+  branch:    'master',
+  commit:    '___COMMIT___',
+  buildTime: '___TIMEST___'
+}
+```
+
 
 ### 2. Grep JSON Helper
 
