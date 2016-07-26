@@ -1,6 +1,6 @@
-# node-deploy-essentials
+[![](https://codeclou.github.io/node-deploy-essentials/doc/node-deploy-essentials-logo.svg)](https://github.com/codeclou/node-deploy-essentials)
 
-Node.js Deploy Essential Scripts
+----
 
 ### :bangbang: THIS IS WORK IN PROGRESS - DO NOT USE
 
