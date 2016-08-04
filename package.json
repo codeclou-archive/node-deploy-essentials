@@ -2,7 +2,7 @@
   "name": "node-deploy-essentials",
   "description": "custom build commands for easy deployment",
   "main": "index.js",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "homepage": "https://github.com/codeclou/node-deploy-essentials",
   "repository": {
     "type": "git",
