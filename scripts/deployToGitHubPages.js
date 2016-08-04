@@ -9,6 +9,20 @@ exports.run = function(gitHubCommitterEmail,
                        gitHubCloneUrl,
                        gitHubSubdirectory,
                        sourceDirToDeployContents) {
+    //
+    // BANNER
+    //
+    shell.echo('=============================');
+    shell.echo('DEPLOY TO GITHUB PAGES SCRIPT');
+    shell.echo('=============================');
+
+    //
+    // PRE
+    //
+    if (shell.test('-d', CLONE_DIR)) {
+        shell.echo('cleaning existing clone dir');
+        shell.rm('-rf', CLONE_DIR);
+    }
 
     var gitVersion = shell.exec('git --version', {silent:true}).stdout;
     var workspace = CLONE_DIR;
@@ -16,12 +30,7 @@ exports.run = function(gitHubCommitterEmail,
         workspace = CLONE_DIR + '/' + gitHubSubdirectory;
     }
 
-    //
-    // BANNER
-    //
-    shell.echo('=============================');
-    shell.echo('DEPLOY TO GITHUB PAGES SCRIPT');
-    shell.echo('=============================');
+
 
     //
     // TEST
@@ -61,9 +70,15 @@ exports.run = function(gitHubCommitterEmail,
     // CLONE
     //
     shell.echo("... cloning ... please wait");
-    shell.exec('git clone --single-branch --branch gh-pages ' + gitHubCloneUrl + ' ' + CLONE_DIR, {silent:true});
+    var gitClone = shell.exec('git clone --single-branch --branch gh-pages ' + gitHubCloneUrl + ' ' + CLONE_DIR);
+    if (gitClone.code !== 0) {
+        shell.echo('Error cloning failed. Quitting.');
+        shell.exit(1);
+    }
     if (gitHubSubdirectory !== undefined && gitHubSubdirectory !== null) {
-        shell.mkdir(CLONE_DIR + '/' + gitHubSubdirectory);
+        if (!shell.test('-d', CLONE_DIR + '/' + gitHubSubdirectory)) {
+            shell.mkdir(CLONE_DIR + '/' + gitHubSubdirectory);
+        }
     }
 
     //
@@ -77,14 +92,12 @@ exports.run = function(gitHubCommitterEmail,
         if (stdout.trim() === '0') {
             shell.echo("... nothing to commit. quitting.");
             shell.cd(rememberedWorkDir);
-            shell.rm('-rf', CLONE_DIR);
         } else {
             shell.echo("... changes detected. pushing changes ... please wait");
             shell.exec('git add . -A');
             shell.exec('git commit -m "automatic deploy by node-deploy-essentials script"');
             shell.exec('git push', function(code, stdout, stderr) {
                 shell.cd(rememberedWorkDir);
-                shell.rm('-rf', CLONE_DIR);
             });
         }
     });
