@@ -88,7 +88,7 @@ exports.run = function(gitHubCommitterEmail,
     shell.cp('-r', sourceDirToDeployContents + '/*', workspace + '/');
 
     shell.cd(CLONE_DIR);
-    shell.exec('git ls-files --other --exclude-standard --directory | wc -l', {silent:true}, function(code, stdout, stderr) {
+    shell.exec('git status --porcelain | wc -l', {silent:true}, function(code, stdout, stderr) {
         if (stdout.trim() === '0') {
             shell.echo("... nothing to commit. quitting.");
             shell.cd(rememberedWorkDir);
