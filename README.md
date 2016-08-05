@@ -147,7 +147,7 @@ npm run ndes deployToGitHubPages as "John Smith" withEmail "john@something.foo" 
 **Notice**
 
   * :bangbang: System needs to have `git` installed
-  * :bangbang: Inside the directory you run the script there should be no `.git` directory! Delete that before running the script.
+  * :bangbang: If in the directory you run the script in already exists a `.git` directory then it is backuped during the script run and restored after finish.
   * :bangbang: The order of the parameters is NOT interchangable.
 
 **Parameters**
@@ -166,3 +166,7 @@ npm run ndes deployToGitHubPages as "John Smith" withEmail "john@something.foo" 
 ## License
 
 [MIT License ](./LICENSE.md) 
+
+## Changelog
+
+Read details in [Releases](https://github.com/codeclou/node-deploy-essentials/releases).
