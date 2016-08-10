@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 var deployToGitHubPages = require('../scripts/deployToGitHubPages.js');
-var deployToGitHubBranch = require('../scripts/deployToGitHubPages.js');
+var deployToGitHubBranch = require('../scripts/deployToGitHubBranch.js');
 var replace = require('../scripts/replace.js');
 var grepJson = require('../scripts/grepJson');
 
