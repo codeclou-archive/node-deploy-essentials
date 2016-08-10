@@ -131,7 +131,10 @@ deployed to: https://codeclou-int.github.io/bitbucket-pipeline-app-demo/master/
 
 ### :bulb: 3. Deployment Scripts
 
-                       
+<!-- keep old anchors for incoming deep links -->                     
+<a id="cyclone-deploytogithubpages-as-githubcommittername-withemail-githubcommitteremail-withgithubauthusername-githubauthusername-withgithubauthtoken-githubauthtokenorpassword-torepository-githubcloneurl-fromsource-sourcedirtodeploycontents-intosubdirectory-githubsubdirectory"></a>
+<a id="deployToGitHubPages"></a>
+
 #### :cyclone: deployToGitHubPages as {gitHubCommitterName} withEmail {gitHubCommitterEmail} withGitHubAuthUsername {gitHubAuthUsername} withGitHubAuthToken {gitHubAuthTokenOrPassword} toRepository {gitHubCloneUrl} fromSource {sourceDirToDeployContents} intoSubdirectory {gitHubSubdirectory}
 
 Will deploy content of `sourceDirToDeployContents` to GitHub Pages `https://owner.github.io/repoName/gitHubSubdirectory/`.
@@ -147,7 +150,6 @@ npm run ndes deployToGitHubPages as "John Smith" withEmail "john@something.foo" 
 **Notice**
 
   * :bangbang: System needs to have `git` installed
-  * :bangbang: If in the directory you run the script in already exists a `.git` directory then it is backuped during the script run and restored after finish.
   * :bangbang: The order of the parameters is NOT interchangable.
 
 **Parameters**
@@ -161,6 +163,42 @@ npm run ndes deployToGitHubPages as "John Smith" withEmail "john@something.foo" 
 | `gitHubCloneUrl`            | `deployToGitHubPages ... toRepository https://repoOwner.github.com/repoName.git` | Note that you have to provide the full URL ending with `.git`. Only `https://` URLs are supported at the moment. |
 | `sourceDirToDeployContents` | `deployToGitHubPages ... fromSource build ...` | The source folder whose contents should be deployed |
 | `gitHubSubdirectory`        | `deployToGitHubPages ... intoSubdirectory myBranch ...` | OPTIONAL-PARAMETER: The subfolder that should be created on baseDir of the gh-pages Branch and deployed into. |  
+
+
+----
+
+<!-- keep old anchors for incoming deep links -->                     
+<a id="deployToGitHubBranch"></a>
+
+#### :cyclone: deployToGitHubBranch as {gitHubCommitterName} withEmail {gitHubCommitterEmail} withGitHubAuthUsername {gitHubAuthUsername} withGitHubAuthToken {gitHubAuthTokenOrPassword} toRepository {gitHubCloneUrl} branch {gitHubBranch} fromSource {sourceDirToDeployContents} intoSubdirectory {gitHubSubdirectory}
+
+Will deploy content of `sourceDirToDeployContents` to GitHub Repository on Branch {gitHubBranch}.
+
+**Example**
+
+This script will deploy the contents of `./build/` directory into the `foobar` branch.
+
+```
+npm run ndes deployToGitHubBranch as "John Smith" withEmail "john@something.foo" withGitHubAuthUsername john123 withGitHubAuthToken aaa121411f31f31ff13 toRepository https://github.com/john123/foo.git branch foobar fromSource build
+```
+
+**Notice**
+
+  * :bangbang: System needs to have `git` installed
+  * :bangbang: The order of the parameters is NOT interchangable.
+
+**Parameters**
+
+| parameter | Example Usage | Description |
+| --------- | ------------- | ----------- |
+| `gitHubCommitterName`       | `deployToGitHubBranch as "John Smith" ...` | - | 
+| `gitHubCommitterEmail`      | `deployToGitHubBranch ... withEmail "john@foo.bar" ...` | - |
+| `gitHubAuthUsername`        | `deployToGitHubBranch ... withGitHubAuthUsername johnsmith ...` | The actual GitHub username that corresponds to `gitHubAuthTokenOrPassword` | 
+| `gitHubAuthTokenOrPassword` | `deployToGitHubBranch ... withGitHubAuthToken aafaffaf121212 ...` | The [GitHub Private Token](https://help.github.com/articles/creating-an-access-token-for-command-line-use/) with `repo` scope. | 
+| `gitHubCloneUrl`            | `deployToGitHubBranch ... toRepository https://repoOwner.github.com/repoName.git` | Note that you have to provide the full URL ending with `.git`. Only `https://` URLs are supported at the moment. |
+| `gitHubBranch`              | `deployToGitHubBranch ... branch master` | Do provide the Branchname without prefixes like `origin/`. Just the plain name. |
+| `sourceDirToDeployContents` | `deployToGitHubBranch ... fromSource build ...` | The source folder whose contents should be deployed |
+| `gitHubSubdirectory`        | `deployToGitHubBranch ... intoSubdirectory myBranch ...` | OPTIONAL-PARAMETER: The subfolder that should be created on baseDir of Branch and deployed into. |  
 
 
 ## License
