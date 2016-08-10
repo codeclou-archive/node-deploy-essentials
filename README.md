@@ -23,12 +23,30 @@ Then add this **script** to wrap the binary in your `package.json`
   }
 }
 ```
+
+----
+
  
 ## Scripts
+
+  * **1. Replace Helper**
+    * [replace byCurrentTimetamp](#replace_byCurrentTimetamp)
+    * [replace by value](#replace_by_value)
+  * **2. Grep Helper**
+    * [grepJson](#grepJson)
+  * **3. Deployment Scripts**  
+    * [deployToGitHubPages](#deployToGitHubPages)
+    * [deployToGitHubBranch](#deployToGitHubBranch)
+    
+----
+----
+
 
 ### :bulb: 1. Replace Helper
 
 The replace helper helps you replace Strings in files.
+
+<a id="replace_byCurrentTimetamp"></a>
 
 #### :cyclone: replace {searchString} byCurrentTimetamp in {filename}
 
@@ -63,6 +81,8 @@ export default {
 ```
 
 ----
+
+<a id="replace_by_value"></a>
 
 #### :cyclone: replace {searchString} by {value} in {filename}
 
@@ -99,7 +119,9 @@ export default {
 
 ----
 
-### :bulb: 2. Grep JSON Helper
+### :bulb: 2. Grep Helper
+
+<a id="grepJson"></a>
 
 #### :cyclone: grepJson {jsonPathQuery} from {filename} withMessage {message}
 
@@ -149,8 +171,9 @@ npm run ndes deployToGitHubPages as "John Smith" withEmail "john@something.foo" 
 
 **Notice**
 
-  * :bangbang: System needs to have `git` installed
+  * :bangbang: System needs to have `git` installed.
   * :bangbang: The order of the parameters is NOT interchangable.
+  * :bangbang: The target directory is purged (all files are deleted before new files are copied).
 
 **Parameters**
 
@@ -184,8 +207,9 @@ npm run ndes deployToGitHubBranch as "John Smith" withEmail "john@something.foo"
 
 **Notice**
 
-  * :bangbang: System needs to have `git` installed
+  * :bangbang: System needs to have `git` installed.
   * :bangbang: The order of the parameters is NOT interchangable.
+  * :bangbang: The target directory is purged (all files are deleted before new files are copied).
 
 **Parameters**
 
