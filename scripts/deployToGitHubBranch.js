@@ -89,6 +89,8 @@ exports.run = function(gitHubCommitterEmail,
     //
     shell.rm('-rf', workspace + '/*');
     shell.cp('-r', sourceDirToDeployContents + '/*', workspace + '/');
+    // copy hidden files as well
+    shell.cp('-r', sourceDirToDeployContents + '/.*', workspace + '/');
 
     //
     // ADD, COMMIT AND PUSH TO GH-PAGES
