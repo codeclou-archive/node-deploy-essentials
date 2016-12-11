@@ -21,13 +21,14 @@
   },
   "scripts": {
     "test": "./node_modules/.bin/nyc  ./node_modules/.bin/ava",
-    "report-coverage": "./node_modules/.bin/nyc report --reporter=lcov > coverage.lcov && codecov"
+    "report-coverage": "./node_modules/.bin/nyc report --reporter=lcov > coverage.lcov && ./node_modules/.bin/codecov"
   },
   "bin": {
     "ndes": "./bin/ndes"
   },
   "devDependencies": {
     "ava": "^0.17.0",
-    "nyc": "^10.0.0"
+    "nyc": "^10.0.0",
+    "codecov": "^1.0.1"
   }
 }
