@@ -20,12 +20,13 @@
     "sync-request": "^3.0.1"
   },
   "scripts": {
-    "test": "./node_modules/.bin/ava"
+    "test": "./node_modules/.bin/nyc  ./node_modules/.bin/ava"
   },
   "bin": {
     "ndes": "./bin/ndes"
   },
   "devDependencies": {
-    "ava": "^0.17.0"
+    "ava": "^0.17.0",
+    "nyc": "^10.0.0"
   }
 }
