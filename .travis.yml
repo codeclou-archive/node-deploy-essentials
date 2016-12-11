@@ -6,4 +6,5 @@ install:
   - npm install -g nyc
   - npm install
 after_success:
+  - npm run report-coverage
   - codecov 
