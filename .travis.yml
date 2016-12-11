@@ -1,5 +1,7 @@
 language: node_js
 node_js:
   - "6"
+install:
+  - npm install -g codecov
 after_success:
-  - bash <(curl -s https://codecov.io/bash)
+  - codecov 
