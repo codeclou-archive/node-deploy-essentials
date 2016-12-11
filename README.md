@@ -4,6 +4,7 @@
 
 [![Build Status](https://travis-ci.org/codeclou/node-deploy-essentials.svg?branch=master)](https://travis-ci.org/codeclou/node-deploy-essentials)
 
+[![Coverage](https://img.shields.io/codecov/c/github/codeclou/node-deploy-essentials.svg?style=flat-square)](https://codecov.io/github/codeclou/node-deploy-essentials?branch=master)
 ----
 
 This library brings you easy to use deploy scripts and helper scripts to write human readable deploy code.
