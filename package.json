@@ -20,7 +20,8 @@
     "sync-request": "^3.0.1"
   },
   "scripts": {
-    "test": "./node_modules/.bin/nyc  ./node_modules/.bin/ava"
+    "test": "./node_modules/.bin/nyc  ./node_modules/.bin/ava",
+    "report-coverage": "./node_modules/.bin/nyc report --reporter=lcov > coverage.lcov && codecov"
   },
   "bin": {
     "ndes": "./bin/ndes"
