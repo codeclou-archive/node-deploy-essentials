@@ -1,5 +1,11 @@
 exports = module.exports = {};
-var shell = require('shelljs');
+const shell = require('shelljs');
+
+//
+//
+// PRIVATE METHODS
+//
+//
 
 exports._extractPortFromDockerPortsEntry = function(_dockerPortsEntry) {
     /* Expected _dockerPortsEntry
@@ -14,7 +20,7 @@ exports._extractPortFromDockerPortsEntry = function(_dockerPortsEntry) {
     return null;
 };
 
-exports._extractDockerIdFromDockerPsOutput = function(_dockerPsOutput, _port) {
+exports._extractDockerIdFromDockerPsOutputByPort = function(_dockerPsOutput, _port) {
     /* Expected _dockerPsOutput
      7d41ed198b59---0.0.0.0:4444->4444/tcp
      2002e09a3440---0.0.0.0:4443->4443/tcp
@@ -35,8 +41,37 @@ exports._extractDockerIdFromDockerPsOutput = function(_dockerPsOutput, _port) {
 
 exports._getDockerIdOnPort = function(_port) {
     var dockerPsOutput = shell.exec('docker ps --format "{{.ID}}---{{.Ports}}"', {silent:true}).stdout;
-    return exports._extractDockerIdFromDockerPsOutput(dockerPsOutput, _port);
+    return exports._extractDockerIdFromDockerPsOutputByPort(dockerPsOutput, _port);
 };
+
+
+exports._extractDockerIdFromDockerPsOutputByName = function(_dockerPsOutput, _name) {
+    /* Expected _dockerPsOutput
+     7d41ed198b59---foo.bar
+     2002e09a3440---bar.foo
+     */
+    if (_dockerPsOutput !== undefined && _dockerPsOutput !== null && _dockerPsOutput !== '') {
+        const dockerPsOutputLineByLine = _dockerPsOutput.split('\n');
+        for (var i = 0, len = dockerPsOutputLineByLine.length; i < len; i++) {
+            const currentLine = dockerPsOutputLineByLine[i].split('---');
+            const dockerId = currentLine[0];
+            const name = currentLine[1];
+            if (name == _name) return dockerId;
+        }
+    }
+    return null;
+};
+
+exports._getDockerIdByName = function(_port) {
+    var dockerPsOutput = shell.exec('docker ps --format "{{.ID}}---{{.Names}}"', {silent:true}).stdout;
+    return exports._extractDockerIdFromDockerPsOutputByName(dockerPsOutput, _port);
+};
+
+//
+//
+// PUBLIC METHODS
+//
+//
 
 exports.killOnPort = function(_port) {
 
@@ -48,6 +83,20 @@ exports.killOnPort = function(_port) {
         shell.exec('docker kill ' + dockerId);
     } else {
         shell.echo('nde> docker killOnPort NO CONTAINER RUNNING on port ' + _port);
+    }
+
+};
+
+exports.deleteDanglingNamedDockerContainer = function(_name) {
+
+    shell.echo('nde> docker deleteDanglingNamedDockerContainer ' + _name);
+
+    const dockerId = exports._getDockerIdByName(_name);
+    if (dockerId !== null) {
+        shell.echo('nde> docker deleteDanglingNamedDockerContainer DELETING ' + dockerId + ' with name ' + _name);
+        shell.exec('docker rm -f ' + dockerId);
+    } else {
+        shell.echo('nde> docker deleteDanglingNamedDockerContainer NO CONTAINER FOUND with name' + _name);
     }
 
 };

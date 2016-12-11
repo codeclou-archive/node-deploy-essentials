@@ -43,6 +43,7 @@ Then add this **script** to wrap the binary in your `package.json`
     * [deployToGitHubBranch](#deployToGitHubBranch)
   * **4. Docker Helper**  
     * [killOnPort](#killOnPort)
+    * [deleteDanglingNamedDockerContainer](#deleteDanglingNamedDockerContainer)
     
 ----
 ----
@@ -278,6 +279,41 @@ npm run ndes docker killOnPort 9999
 | parameter | Example Usage | Description |
 | --------- | ------------- | ----------- |
 | `port`       | `4444` | Kills docker container on TCP Port 4444 | 
+
+----
+
+#### :cyclone: docker deleteDanglingNamedDockerContainer {name}
+
+<a id="deleteDanglingNamedDockerContainer"></a>
+
+Will delete a named docker container that has been run before and is dangling around. 
+It basically performs `docker rm -f {name}` but will throw no error if no container with that name exists.
+
+**Example**
+
+This command will delete a docker container with name `local.codeclou.io`
+
+```
+npm run ndes docker deleteDanglingNamedDockerContainer local.codeclou.io
+```
+
+Useful when you run for example this docker container and name it with `--name local.codeclou.io`:
+
+```
+docker run -d -p 9999:4443 --volume $(pwd):/opt/www --name local.codeclou.io codeclou/docker-nginx-self-signed-ssl
+```
+
+
+**Notice**
+
+  * :bangbang: System needs to have `docker` installed and docker daemon running.
+  * :bangbang: docker command needs to be executable without `sudo`.
+
+**Parameters**
+
+| parameter | Example Usage | Description |
+| --------- | ------------- | ----------- |
+| `name`       | `foobar` | The name of the docker container | 
 
 
 
