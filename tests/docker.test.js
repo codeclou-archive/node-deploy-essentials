@@ -8,6 +8,6 @@ test(t => {
 });
 
 test(t => {
-    const port = docker._extractPortFromDockerPortsEntry('0.0.0.0:4443->4443/tcp');
-    t.is(port, '4443');
+    const port = docker._extractPortFromDockerPortsEntry('0.0.0.0:4222->4443/tcp');
+    t.is(port, '4222');
 });

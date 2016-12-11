@@ -255,10 +255,23 @@ This command will kill a docker container running on TCP Port 4444.
 npm run ndes docker killOnPort 4444
 ```
 
+If you run for example this docker container and bind port 9999:
+
+```
+docker run -d -p 9999:4443 --volume $(pwd):/opt/www --name local.codeclou.io codeclou/docker-nginx-self-signed-ssl
+```
+
+You can kill it with:
+
+```
+npm run ndes docker killOnPort 9999
+```
+
 **Notice**
 
   * :bangbang: System needs to have `docker` installed and docker daemon running.
   * :bangbang: docker command needs to be executable without `sudo`.
+  * :bangbang: kills by public port! Currently only works when ONE Port is assigned!
 
 **Parameters**
 

@@ -3,10 +3,12 @@ var shell = require('shelljs');
 
 exports._extractPortFromDockerPortsEntry = function(_dockerPortsEntry) {
     /* Expected _dockerPortsEntry
-       0.0.0.0:4444->4444/tcp
+       0.0.0.0:4422->4444/tcp
+       ----
+       will return 4422
      */
     if (_dockerPortsEntry !== undefined && _dockerPortsEntry !== null && _dockerPortsEntry !== '') {
-        const regex = /^.*[>]([0-9]+)\/tcp$/gi;
+        const regex = /^.*:([0-9]+)[-][>].*$/gi;
         return _dockerPortsEntry.replace(regex, '$1');
     }
     return null;
@@ -16,6 +18,8 @@ exports._extractDockerIdFromDockerPsOutput = function(_dockerPsOutput, _port) {
     /* Expected _dockerPsOutput
      7d41ed198b59---0.0.0.0:4444->4444/tcp
      2002e09a3440---0.0.0.0:4443->4443/tcp
+     ----
+     Public port is on the left side
      */
     if (_dockerPsOutput !== undefined && _dockerPsOutput !== null && _dockerPsOutput !== '') {
         const dockerPsOutputLineByLine = _dockerPsOutput.split('\n');
