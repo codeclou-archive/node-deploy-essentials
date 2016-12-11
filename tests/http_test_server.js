@@ -12,22 +12,27 @@
 var express = require('express');
 var app = express();
 var kill3k = require('kill3k');
-kill3k(3000);
 
-var counter = 0;
-app.get('/', function (req, res) {
-    if (counter > 10) {
-        res.status(200);
-    } else {
-        res.status(400);
-    }
-    res.send('ok');
-    counter++;
-});
-app.get('/reset', function (req, res) {
-    counter = 0;
-    res.send('ok');
-});
-app.listen(3000, function () {
-    console.log('counter-testserver started on port 3000');
-});
+kill3k(3000);
+setTimeout(function(){
+    var counter = 0;
+    app.get('/', function (req, res) {
+        if (counter > 10) {
+            res.status(200);
+        } else {
+            res.status(400);
+        }
+        res.send('ok');
+        counter++;
+    });
+    app.get('/reset', function (req, res) {
+        counter = 0;
+        res.send('ok');
+    });
+    app.listen(3000, function () {
+        console.log('counter-testserver started on port 3000');
+    });
+}, 300);
+
+
+
