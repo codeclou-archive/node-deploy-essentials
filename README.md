@@ -225,6 +225,42 @@ npm run ndes deployToGitHubBranch as "John Smith" withEmail "john@something.foo"
 | `gitHubSubdirectory`        | `deployToGitHubBranch ... intoSubdirectory myBranch ...` | OPTIONAL-PARAMETER: The subfolder that should be created on baseDir of Branch and deployed into. |  
 
 
+
+
+
+
+----
+
+### :bulb: 4. Docker Helper
+
+<a id="docker-helper"></a>
+
+#### :cyclone: docker killOnPort {port}
+
+Will kill a running docker container on the specified TCP Port.
+
+**Example**
+
+This command will kill a docker container running on TCP Port 4444.
+
+```
+npm run ndes docker killOnPort 4444
+```
+
+**Notice**
+
+  * :bangbang: System needs to have `docker` installed and docker daemon running.
+  * :bangbang: docker command needs to be executable without `sudo`.
+
+**Parameters**
+
+| parameter | Example Usage | Description |
+| --------- | ------------- | ----------- |
+| `port`       | `4444` | Kills docker container on TCP Port 4444 | 
+
+
+
+
 ## License
 
 [MIT License ](./LICENSE.md) 

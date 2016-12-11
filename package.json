@@ -2,7 +2,7 @@
   "name": "node-deploy-essentials",
   "description": "custom build commands for easy deployment",
   "main": "index.js",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "homepage": "https://github.com/codeclou/node-deploy-essentials",
   "repository": {
     "type": "git",
@@ -16,7 +16,13 @@
     "jsonpath": "^0.2.6",
     "shelljs": "^0.7.0"
   },
+  "scripts": {
+    "test": "./node_modules/.bin/ava"
+  },
   "bin": {
     "ndes": "./bin/ndes"
+  },
+  "devDependencies": {
+    "ava": "^0.17.0"
   }
 }
