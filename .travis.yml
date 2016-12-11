@@ -3,5 +3,6 @@ node_js:
   - "6"
 install:
   - npm install -g codecov
+  - npm install -g nyc
 after_success:
   - codecov 
