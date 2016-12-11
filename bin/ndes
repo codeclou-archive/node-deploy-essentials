@@ -122,7 +122,7 @@ if (process.argv[2] === 'deployToGitHubPages') {
     if (command === 'waitForStatusCode' && process.argv[4] !== undefined && process.argv[5] !== undefined) {
         var statusCode = process.argv[4];
         var url = process.argv[5];
-        http.waitForStatusCode(port, url);
+        http.waitForStatusCode(statusCode, url);
     }
 
 } else {

@@ -1,7 +1,6 @@
 exports = module.exports = {};
 const shell = require('shelljs');
 const request = require('sync-request');
-const sleep = require('sleep');
 
 
 //
@@ -15,7 +14,7 @@ exports.waitForStatusCode = function(_statusCode, _url) {
     shell.echo('nde> http waitForStatusCode ' + _statusCode + ' on url ' + _url);
 
     let statusCodeMatches = false;
-    let breakCounter = 100;
+    let breakCounter = 5000;
     while (statusCodeMatches === false) {
         const response = request('GET', _url);
         if (response.statusCode == _statusCode) {
@@ -23,7 +22,6 @@ exports.waitForStatusCode = function(_statusCode, _url) {
         }
         shell.echo('.');
         breakCounter--;
-        sleep.sleep(1);
         if (breakCounter == 0) {
             shell.echo('nde> http waitForStatusCode ' + _statusCode + ' on url ' + _url + ' ERROR breakCounter reached 0');
             shell.exit(1)

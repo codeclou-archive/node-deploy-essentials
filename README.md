@@ -333,7 +333,7 @@ docker run -d -p 9999:4443 --volume $(pwd):/opt/www --name local.codeclou.io cod
 <a id="waitForStatusCode"></a>
 
 This is usefull when you are starting up a big server that needs some time for startup
-and you want to wait for a HTTP 200 status code. Request Loop will break after 100 requests and will pause for 1 sec between requests.
+and you want to wait for a HTTP 200 status code. Request Loop will break after 5000 requests and will NOT pause in between requests.
 
 **Example**
 
@@ -345,7 +345,7 @@ npm run ndes http waitForStatusCode 200 http://someurl/foo
 
 **Notice**
 
-  * :bangbang: request loops stops after 100 requests with an `exit 1`
+  * :bangbang: request loops stops after 5000 requests with an `exit 1`
 
 **Parameters**
 

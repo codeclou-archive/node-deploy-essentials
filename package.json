@@ -2,7 +2,7 @@
   "name": "node-deploy-essentials",
   "description": "custom build commands for easy deployment",
   "main": "index.js",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "homepage": "https://github.com/codeclou/node-deploy-essentials",
   "repository": {
     "type": "git",
@@ -17,7 +17,6 @@
     "jsonpath": "^0.2.6",
     "request": "^2.79.0",
     "shelljs": "^0.7.0",
-    "sleep": "^5.0.0",
     "sync-request": "^3.0.1"
   },
   "scripts": {
