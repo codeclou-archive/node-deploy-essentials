@@ -16,7 +16,12 @@ exports.waitForStatusCode = function(_statusCode, _url) {
     var statusCodeMatches = false;
     var breakCounter = 5000;
     while (statusCodeMatches === false) {
-        const response = request('GET', _url);
+        var response = { statusCode: -1 };
+        try {
+            response = request('GET', _url);
+        } catch (err) {
+            shell.echo(':');
+        }
         if (response.statusCode == _statusCode) {
             statusCodeMatches = true;
         }

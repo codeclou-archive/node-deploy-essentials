@@ -10,8 +10,8 @@ npm --registry https://registry.npmjs.org/ publish
 (2) Create Git Tag
 
 ```
-git tag -a 0.0.13 -m "rel 0.0.13"
-git push origin 0.0.13
+git tag -a 0.0.14 -m "rel 0.0.14"
+git push origin 0.0.14
 ```
 
 (3) Go to github releases and create release from tag.
