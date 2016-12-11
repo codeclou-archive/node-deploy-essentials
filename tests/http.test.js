@@ -3,7 +3,7 @@ import request from 'sync-request';
 import test from 'ava';
 
 test('http waitForStatusCode', t => {
-    request('GET', 'https://codeclou.io/test/request/retry.php?hash=node-deploy-essentials-unit-test&reset=true');
-    http.waitForStatusCode(200, 'https://codeclou.io/test/request/retry.php?hash=node-deploy-essentials-unit-test');
+    request('GET', 'http://localhost:3000/reset');
+    http.waitForStatusCode(200, 'http://localhost:3000/');
     t.pass();
 });

@@ -20,7 +20,8 @@
     "sync-request": "^3.0.1"
   },
   "scripts": {
-    "test": "./node_modules/.bin/nyc  ./node_modules/.bin/ava",
+    "test": "node tests/http_test_server.js & ./node_modules/.bin/nyc  ./node_modules/.bin/ava",
+    "test:server": "node tests/test_server.js",
     "report-coverage": "./node_modules/.bin/nyc report --reporter=lcov > coverage.lcov && ./node_modules/.bin/codecov"
   },
   "bin": {
@@ -28,7 +29,9 @@
   },
   "devDependencies": {
     "ava": "^0.17.0",
-    "nyc": "^10.0.0",
-    "codecov": "^1.0.1"
+    "codecov": "^1.0.1",
+    "express": "^4.14.0",
+    "kill3k": "^0.2.0",
+    "nyc": "^10.0.0"
   }
 }
