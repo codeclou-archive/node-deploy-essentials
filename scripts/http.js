@@ -13,8 +13,8 @@ exports.waitForStatusCode = function(_statusCode, _url) {
 
     shell.echo('nde> http waitForStatusCode ' + _statusCode + ' on url ' + _url);
 
-    let statusCodeMatches = false;
-    let breakCounter = 5000;
+    var statusCodeMatches = false;
+    var breakCounter = 5000;
     while (statusCodeMatches === false) {
         const response = request('GET', _url);
         if (response.statusCode == _statusCode) {
