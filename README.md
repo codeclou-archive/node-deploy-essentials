@@ -37,6 +37,8 @@ Then add this **script** to wrap the binary in your `package.json`
   * **3. Deployment Scripts**  
     * [deployToGitHubPages](#deployToGitHubPages)
     * [deployToGitHubBranch](#deployToGitHubBranch)
+  * **4. Docker Helper**  
+    * [killOnPort](#killOnPort)
     
 ----
 ----
@@ -236,6 +238,8 @@ npm run ndes deployToGitHubBranch as "John Smith" withEmail "john@something.foo"
 <a id="docker-helper"></a>
 
 #### :cyclone: docker killOnPort {port}
+
+<a id="killOnPort"></a>
 
 Will kill a running docker container on the specified TCP Port.
 
