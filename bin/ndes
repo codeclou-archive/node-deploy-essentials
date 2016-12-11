@@ -5,6 +5,7 @@ var deployToGitHubBranch = require('../scripts/deployToGitHubBranch.js');
 var replace = require('../scripts/replace.js');
 var grepJson = require('../scripts/grepJson');
 var docker = require('../scripts/docker');
+var http = require('../scripts/http');
 
 if (process.argv[2] === 'deployToGitHubPages') {
     var gitHubSubdirectory = null;
@@ -114,6 +115,14 @@ if (process.argv[2] === 'deployToGitHubPages') {
     if (dockerCommand === 'deleteDanglingNamedDockerContainer' && process.argv[4] !== undefined) {
         var name = process.argv[4];
         docker.deleteDanglingNamedDockerContainer(name);
+    }
+
+} else if (process.argv[2] === 'http') {
+    var command = process.argv[3];
+    if (command === 'waitForStatusCode' && process.argv[4] !== undefined && process.argv[5] !== undefined) {
+        var statusCode = process.argv[4];
+        var url = process.argv[5];
+        http.waitForStatusCode(port, url);
     }
 
 } else {

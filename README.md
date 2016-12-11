@@ -44,6 +44,9 @@ Then add this **script** to wrap the binary in your `package.json`
   * **4. Docker Helper**  
     * [killOnPort](#killOnPort)
     * [deleteDanglingNamedDockerContainer](#deleteDanglingNamedDockerContainer)
+  * **5. HTTP Helper**  
+    * [waitForStatusCode](#waitForStatusCode)
+   
     
 ----
 ----
@@ -315,6 +318,41 @@ docker run -d -p 9999:4443 --volume $(pwd):/opt/www --name local.codeclou.io cod
 | --------- | ------------- | ----------- |
 | `name`       | `foobar` | The name of the docker container | 
 
+
+
+
+
+----
+
+### :bulb: 5. HTTP Helper
+
+<a id="http-helper"></a>
+
+#### :cyclone: http waitForStatusCode {statusCode} {url}
+
+<a id="waitForStatusCode"></a>
+
+This is usefull when you are starting up a big server that needs some time for startup
+and you want to wait for a HTTP 200 status code. Request Loop will break after 100 requests and will pause for 1 sec between requests.
+
+**Example**
+
+This command will request the url and wait for a HTTP 200 and blocks the next command inside a shell script.
+
+```
+npm run ndes http waitForStatusCode 200 http://someurl/foo
+```
+
+**Notice**
+
+  * :bangbang: request loops stops after 100 requests with an `exit 1`
+
+**Parameters**
+
+| parameter | Example Usage | Description |
+| --------- | ------------- | ----------- |
+| `statusCode`       | `200` | e.g. 200, 302 a.s.o |
+| `url`       | `https://some.url` | e.g. http://google.com |
 
 
 
