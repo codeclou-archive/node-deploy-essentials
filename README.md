@@ -364,3 +364,7 @@ npm run ndes http waitForStatusCode 200 http://someurl/foo
 ## Changelog
 
 Read details in [Releases](https://github.com/codeclou/node-deploy-essentials/releases).
+
+## Note to contributors
+
+By sending us patches/PRs, you automatically license the code under the same terms as node-deploy-essentials.
