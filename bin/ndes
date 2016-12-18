@@ -8,9 +8,10 @@ var docker = require('../scripts/docker');
 var http = require('../scripts/http');
 var fs = require('fs');
 var shell = require('shelljs');
+var path = require('path');
 
 if (process.argv[2] === '--version' || process.argv[2] === '-v' ) {
-    var packageJson = fs.readFileSync('./package.json');
+    var packageJson = fs.readFileSync(path.resolve(__dirname, '../package.json'));
     var packageJsonParsed = JSON.parse(packageJson);
     shell.echo(packageJsonParsed.version);
 }
