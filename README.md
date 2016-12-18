@@ -14,7 +14,7 @@ It is powered by [ShellJS](https://github.com/shelljs/shelljs) and [jsonpath](ht
 ## Howto Use
 
 
-### 1) :monkey: Install the **dev dependency**
+### 1) :monkey: Install as **dev dependency**
 
 ```shell
 npm install node-deploy-essentials --save-dev
