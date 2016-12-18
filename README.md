@@ -55,6 +55,8 @@ ndes --version
 docker run --tty --volume $(pwd)/:/opt/npm codeclou/docker-node-deploy-essentials:latest ndes --version
 ```
 
+Note: Not all commands might work right when running as docker container. If you use *waitForStatus* or *dockerHelper* commands this might not work.
+
 ----
 
  
