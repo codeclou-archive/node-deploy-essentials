@@ -6,6 +6,14 @@ var replace = require('../scripts/replace.js');
 var grepJson = require('../scripts/grepJson');
 var docker = require('../scripts/docker');
 var http = require('../scripts/http');
+var fs = require('fs');
+var shell = require('shelljs');
+
+if (process.argv[2] === '--version' || process.argv[2] === '-v' ) {
+    var packageJson = fs.readFileSync('./package.json');
+    var packageJsonParsed = JSON.parse(packageJson);
+    shell.echo(packageJsonParsed.version);
+}
 
 if (process.argv[2] === 'deployToGitHubPages') {
     var gitHubSubdirectory = null;
