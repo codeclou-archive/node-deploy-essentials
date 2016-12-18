@@ -14,7 +14,7 @@ It is powered by [ShellJS](https://github.com/shelljs/shelljs) and [jsonpath](ht
 ## Howto Use
 
 
- * 1) :monkey: Install the **dev dependency**
+### 1) :monkey: Install the **dev dependency**
 
 ```shell
 npm install node-deploy-essentials --save-dev
@@ -37,7 +37,7 @@ npm run ndes --version
 ```
 
 
- * 2) :monkey: Install **globally**
+###  2) :monkey: Install **globally**
 
 ```shell
 npm install -g node-deploy-essentials
@@ -49,7 +49,7 @@ Now you can run
 ndes --version
 ```
 
- * 3) :monkey: Run via **docker**
+### 3) :monkey: Run via **docker**
 
 ```shell
 docker run --tty --volume $(pwd)/:/opt/npm codeclou/docker-node-deploy-essentials:latest ndes --version
