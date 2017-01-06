@@ -4,7 +4,6 @@ var deployToGitHubPages = require('../scripts/deployToGitHubPages.js');
 var deployToGitHubBranch = require('../scripts/deployToGitHubBranch.js');
 var replace = require('../scripts/replace.js');
 var grepJson = require('../scripts/grepJson');
-var docker = require('../scripts/docker');
 var http = require('../scripts/http');
 var fs = require('fs');
 var shell = require('shelljs');
@@ -114,17 +113,6 @@ if (process.argv[2] === 'deployToGitHubPages') {
         message = process.argv[7];
     }
     grepJson.run(jsonpath, jsonfile, message);
-
-} else if (process.argv[2] === 'docker') {
-    var dockerCommand = process.argv[3];
-    if (dockerCommand === 'killOnPort' && process.argv[4] !== undefined) {
-        var port = process.argv[4];
-        docker.killOnPort(port);
-    }
-    if (dockerCommand === 'deleteDanglingNamedDockerContainer' && process.argv[4] !== undefined) {
-        var name = process.argv[4];
-        docker.deleteDanglingNamedDockerContainer(name);
-    }
 
 } else if (process.argv[2] === 'http') {
     var command = process.argv[3];
