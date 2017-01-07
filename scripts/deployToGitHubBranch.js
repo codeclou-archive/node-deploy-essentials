@@ -83,44 +83,47 @@ exports.run = function(gitHubCommitterEmail,
             shell.mkdir(CLONE_DIR + '/' + gitHubSubdirectory);
         }
     }
-
-    //
-    // COPY BUILD ARTIFACTS
-    //
-    shell.rm('-rf', workspace + '/*');
-    shell.cp('-r', sourceDirToDeployContents + '/*', workspace + '/');
-    // copy hidden files as well
-    shell.cp('-r', sourceDirToDeployContents + '/.*', workspace + '/');
-
-    //
-    // ADD, COMMIT AND PUSH TO GH-PAGES
-    //
-    shell.cd(CLONE_DIR);
-    shell.exec('git status --porcelain | wc -l', {silent:true}, function(code, stdout, stderr) {
-        if (stdout.trim() === '0') {
-            shell.echo('nde> nothing to commit. quitting.');
-        } else {
-            shell.echo('nde> changes detected. pushing changes ... please wait');
-            shell.exec('git add . -A');
-            shell.exec('git commit -m "automatic deploy by node-deploy-essentials script"');
-            shell.exec('git push');
-        }
+    if (shell.test('-d', sourceDirToDeployContents)) {
+        //
+        // COPY BUILD ARTIFACTS
+        //
+        shell.rm('-rf', workspace + '/*');
+        shell.cp('-r', sourceDirToDeployContents + '/*', workspace + '/');
+        // copy hidden files as well
+        shell.cp('-r', sourceDirToDeployContents + '/.*', workspace + '/');
 
         //
-        // POST CLEANUP
+        // ADD, COMMIT AND PUSH TO GH-PAGES
         //
-        shell.cd(rememberedWorkDir);
-        shell.echo('nde> cleanup. deleting ' + CLONE_DIR + '... please wait');
-        shell.rm('-rf', CLONE_DIR);
+        shell.cd(CLONE_DIR);
+        shell.exec('git status --porcelain | wc -l', {silent:true}, function(code, stdout, stderr) {
+            if (stdout.trim() === '0') {
+                shell.echo('nde> nothing to commit. quitting.');
+            } else {
+                shell.echo('nde> changes detected. pushing changes ... please wait');
+                shell.exec('git add . -A');
+                shell.exec('git commit -m "automatic deploy by node-deploy-essentials script"');
+                shell.exec('git push');
+            }
 
-        //
-        // RESTORE EXISTING .git
-        //
-        if (shell.test('-d', '_git_BACKUP_TMP')) {
-            shell.echo('nde> RESTORING existing .git directory.');
-            shell.mv('_git_BACKUP_TMP', '.git');
-        }
+            //
+            // POST CLEANUP
+            //
+            shell.cd(rememberedWorkDir);
+            shell.echo('nde> cleanup. deleting ' + CLONE_DIR + '... please wait');
+            shell.rm('-rf', CLONE_DIR);
 
-        shell.echo('nde> all done.');
-    });
+            //
+            // RESTORE EXISTING .git
+            //
+            if (shell.test('-d', '_git_BACKUP_TMP')) {
+                shell.echo('nde> RESTORING existing .git directory.');
+                shell.mv('_git_BACKUP_TMP', '.git');
+            }
+
+            shell.echo('nde> all done.');
+        });
+    } else {
+        shell.echo('nde> WARN  sourceDirToDeployContents does not exist: ' + sourceDirToDeployContents);
+    }
 };
