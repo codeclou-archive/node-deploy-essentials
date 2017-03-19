@@ -210,6 +210,7 @@ npm run ndes deployToGitHubPages as "John Smith" withEmail "john@something.foo" 
   * :bangbang: System needs to have `git` installed.
   * :bangbang: The order of the parameters is NOT interchangable.
   * :bangbang: The target directory is purged (all files are deleted before new files are copied).
+  * :bangbang: The `gitHubAuthTokenOrPassword` might appear printed out as shell output!
 
 **Parameters**
 
@@ -246,6 +247,7 @@ npm run ndes deployToGitHubBranch as "John Smith" withEmail "john@something.foo"
   * :bangbang: System needs to have `git` installed.
   * :bangbang: The order of the parameters is NOT interchangable.
   * :bangbang: The target directory is purged (all files are deleted before new files are copied).
+  * :bangbang: The `gitHubAuthTokenOrPassword` might appear printed out as shell output!
 
 **Parameters**
 
